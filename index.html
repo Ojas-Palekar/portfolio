@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="/style.css" />
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://kit.fontawesome.com/17308a8bd8.js" crossorigin="anonymous"></script>
+    <title>My Portfolio</title>
+  </head>
+  <body>
+
+    <!-- -------------Circle--------------- -->
+
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <script>
+      const coords = { x: 0, y: 0 };
+      const circles = document.querySelectorAll(".circle");
+
+      const colors = [
+        "#ed6d29",
+        "#f07828",
+        "#f38227",
+        "#f68d26",
+        "#f89727",
+        "#faa228",
+        "#fcac2a",
+        "#fdb62c",
+        "#fec130",
+        "#ffcb35",
+        "#ffd53b",
+        "#ffdf42",
+      ];
+
+      circles.forEach(function (circle, index) {
+        circle.x = 0;
+        circle.y = 0;
+        circle.style.backgroundColor = colors[index % colors.length];
+      });
+
+      window.addEventListener("mousemove", function (e) {
+        coords.x = e.clientX;
+        coords.y = e.clientY;
+      });
+
+      function animateCircles() {
+        let x = coords.x;
+        let y = coords.y;
+
+        circles.forEach(function (circle, index) {
+          circle.style.left = x - 12 + "px";
+          circle.style.top = y - 12 + "px";
+
+          circle.style.scale = (circles.length - index) / circles.length;
+
+          circle.x = x;
+          circle.y = y;
+
+          const nextCircle = circles[index + 1] || circles[0];
+          x += (nextCircle.x - x) * 0.3;
+          y += (nextCircle.y - y) * 0.3;
+        });
+
+        requestAnimationFrame(animateCircles);
+      }
+
+      animateCircles();
+    </script>
+
+    <!-- ------------Home------------- -->
+
+    <header id="header">
+      <div class="container">
+        <nav>
+          <img src="Images/logo1.png" alt="Logo" class="logo" />
+          <ul id="sidemenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#">Skills</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Contact</a></li>
+            <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+          </ul>
+          <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <script>
+          var sidemenu = document.getElementById("sidemenu");
+
+          function openmenu() {
+            sidemenu.style.right = "0";
+          }
+          function closemenu() {
+            sidemenu.style.right = "-200px";
+          }
+        </script>
+        <div class="header-text">
+          <h1>Hi, It's <span> Ojas Palekar.</span></h1>
+          <h2 class="typing-text">I'm a <span></span></h2>
+          <br />
+          <p>
+            Hello! I'm a web developer and video editor with a passion for
+            bringing ideas to life <br />
+            through seamless digital experiences and compelling visual content.
+          </p>
+
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+          <a href="#">
+            <button>CONTACT</button>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ------------About Us------------- -->
+
+    <div id="about">
+      <div class="container">
+        <div class="row">
+          <div class="about-col-1">
+            <img src="Images/page1.jpg" />
+          </div>
+          <div class="about-col-2">
+            <h1 class="sub-title">About Me:</h1>
+            <br /><br />
+            <p>
+              ● Hello! I'm a beginner web developer excited to start my journey
+              in the tech world. I have recently learned the basics of web
+              development, including HTML, CSS, and JavaScript. I'm eager to
+              continue learning and improving my skills to create user-friendly
+              websites and web applications.
+            </p>
+            <br /><br />
+            <p>
+              ● My mission is to create intuitive, engaging websites while also
+              producing high-quality video content that tells impactful stories.
+            </p>
+            <br />
+            <div class="tab-titles">
+              <p class="tab-links active-link" onclick="opentab('skills')">
+                Skills
+              </p>
+              <p class="tab-links" onclick="opentab('experience')">
+                Experience
+              </p>
+              <p class="tab-links" onclick="opentab('education')">Education</p>
+            </div>
+            <div class="tab-contents active-tab" id="skills">
+              <ul>
+                <li>
+                  <span>Web Development</span><br />Designing Web Interfaces
+                </li>
+                <li><span>Video Editing</span><br />Designing Thumbnels</li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="experience">
+              <ul>
+                <li>
+                  <span>I Have 1 Year Experience In</span><br />Web Designing &
+                  Video Editing
+                </li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="education">
+              <ul>
+                <li><span>BCA</span><br />Asian International University</li>
+                <li><span>I Complated My HSC In:</span><br />2022</li>
+                <li><span>I Completed My SSC In:</span><br />2020</li>
+              </ul>
+            </div>
+            <br /><br />
+            <h1 class="cta">Call to Action (CTA):</h1>
+            <br />
+            <p>
+              ● Feel free to explore my portfolio below and reach out <br />
+              if you’re looking for a web developer or video editor who can help
+              you create an engaging online presence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ------------Services------------- -->
+
+    <div id="services">
+      <div class="container">
+        <center>
+        <h1 class="sub-title">My Services</h1>
+      </center>
+        <div class="services-list">
+          <div>
+            <i class="fa-solid fa-code"></i>
+            <h2>Web Design</h2>
+            <p>Offering custom, responsive, and SEO-optimized web design services to create user-friendly,
+              visually appealing, and high-performing websites.
+            </p>
+            <a href="#">learn more</a>
+          </div>
+          <div>
+            <i class="fa-regular fa-image"></i>
+            <h2>Graphic Design</h2>
+            <p>Providing creative graphic design services for branding, marketing materials, logos,
+              illustrations, and digital content to enhance your visual identity.
+            </p>
+            <a href="#">learn more</a>
+          </div>
+          <div>
+            <i class="fa-solid fa-video"></i>
+            <h2>Video Edit</h2>
+            <p>Expert video editing services for creating polished, engaging content, including cuts,
+              transitions, color correction, effects, and audio enhancement.
+            </p>
+            <a href="#">learn more</a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+</html>
