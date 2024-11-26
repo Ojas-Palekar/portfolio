@@ -1,2 +1,0 @@
-# portfolio
-Ojas Portfolio
